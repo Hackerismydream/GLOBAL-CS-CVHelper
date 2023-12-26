@@ -1,8 +1,10 @@
 # GLOBAL-CS-CVHelper
 ![Static Badge](https://img.shields.io/badge/version-0.1.0-red)
+![Static Badge](https://img.shields.io/badge/python-3.10-blue)
 ![maven](https://img.shields.io/badge/FastAPI-0.105.0-green.svg)
 ![Static Badge](https://img.shields.io/badge/openai-1.1-blue)
 ![Static Badge](https://img.shields.io/badge/vue-3.2.13-green)
+![Static Badge](https://img.shields.io/badge/element_plus-2.4.4-blue)
 
 让 AI 为您解决CS留学项目选择问题！
 <br>
@@ -69,6 +71,8 @@ yarn serve
 ```
 项目页面会在您的默认网络浏览器中启动，允许您上传 PDF 格式的简历并生成推荐。
 
+![demo_pic_1.png](demo_pic_1.png)
+![demo_pic_2.png](demo_pic_2.png)
 
 ### 使用CLI
 
@@ -188,3 +192,21 @@ Telegram bot account by using Scrapy, Selenium, BeautifulSoup, Regex, Requests, 
     ]
 }
 ```
+
+## ABOUT DB
+
+目前已更新至以下项目：
+* Cambridge ACS
+* ETH MSCS
+* Cambridge MLMI
+* EPFL MSCS
+* ETH Cyber Security
+* Oxford ACS
+* Aalto CS
+* IC AC
+* TUD MSCS
+* UvA AI
+* CTH CAS
+* NUS DSML
+* UvA&VU CS
+* IPP DSAI

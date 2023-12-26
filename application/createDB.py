@@ -15,7 +15,7 @@ name_map = {
 
 
 # 加载JSON数据
-with open('../exp/ALL_DETAIL.json', 'r', encoding='utf-8') as file:
+with open('../exp/ALL_DETAIL_FULL.json', 'r', encoding='utf-8') as file:
     DETAIL = json.load(file)
 
 def init_db():
@@ -31,7 +31,7 @@ def init_db():
           name VARCHAR(255),
           duration VARCHAR(50),
           language VARCHAR(50),
-          degree_type VARCHAR(50),
+          degree_type VARCHAR(200),
           internship_required VARCHAR(50),
           thesis_required VARCHAR(50),
           scholarship VARCHAR(255),
@@ -143,7 +143,12 @@ def insert_other():
                 INSERT INTO ApplicationNotes (university_id, note)
                 VALUES (%s, %s)
             """
-        info = DETAIL[entry]['注意事项']['网申注意事项']
+        try:
+            info = DETAIL[entry]['注意事项']['网申注意事项']
+        except:
+            print(entry)
+            exit()
+        # info = DETAIL[entry]['注意事项']['网申注意事项']
         name = entry
         for item in info:
             values = (name_map.get(name), item)

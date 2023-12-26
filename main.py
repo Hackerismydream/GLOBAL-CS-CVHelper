@@ -30,6 +30,7 @@ def get_db():
     finally:
         db.close()
 
+
 @app.post("/global/")
 async def recommend_project(file: UploadFile):
     """
@@ -59,9 +60,10 @@ async def recommend_project(file: UploadFile):
         university = crud.get_universities_by_name(db, recommended_programs[i])
         info = {}
         for item in university:
-            info.update({'项目介绍': {'项目时长': item.duration, '授课语言': item.language, '学位类型': item.degree_type,
-                                 '是否强制实习': item.internship_required, '毕业是否需要论文': item.thesis_required,
-                                 '奖学金': item.scholarship, '其他信息': item.other_info}})
+            info.update(
+                {'项目介绍': {'项目时长': item.duration, '授课语言': item.language, '学位类型': item.degree_type,
+                              '是否强制实习': item.internship_required, '毕业是否需要论文': item.thesis_required,
+                              '奖学金': item.scholarship, '其他信息': item.other_info}})
             pros = []
             cons = []
             for pro in item.pros:
@@ -80,8 +82,8 @@ async def recommend_project(file: UploadFile):
     recommended.update({'推荐院校': recommend_project})
     recommended.update({'推荐理由': recommended_resons})
 
-
     return recommended
+
 
 @app.get("/universities/id/{university_id}", response_model=schemas.University)
 def get_university(university_id: int, db: Session = Depends(get_db)):
@@ -91,6 +93,7 @@ def get_university(university_id: int, db: Session = Depends(get_db)):
 @app.get("/universities/name/{name}", response_model=List[schemas.University])
 def get_universities_by_name(name: str, db: Session = Depends(get_db)):
     return crud.get_universities_by_name(db, name)
+
 
 @app.post("/questions/")
 async def create_questions(file: UploadFile):
@@ -105,4 +108,17 @@ async def create_questions(file: UploadFile):
         str: The generated interview questions.
     """
     answers = question_maker.create_questions(file.file)
+    # answers = {
+    #     "technical_questions": [
+    #         "您曾经在哪些编程语言中有经验？请谈谈您对Python3的了解和使用经验。",
+    #         "您在开发工具链方面有什么经验？请谈谈您在Linux、Git、Bash等工具的应用经验。",
+    #         "作为一名GPU软件开发工程师实习生，您在开发内部图形工作负载管理工具时遇到了哪些技术挑战？您是如何解决这些挑战的？"
+    #     ],
+    #     "behavior_questions": [
+    #         "能否描述一次您在团队合作中遇到的挑战，并且您是如何处理这种挑战的？",
+    #         "您在担任计算机图形学助教期间，如何处理学生的问题和疑问？请提供一个具体的例子。",
+    #         "在您担任数据工程师实习生期间，您是如何应对紧张的工作期限并成功完成任务的？"
+    #     ]
+    # }
+
     return answers
