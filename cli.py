@@ -1,17 +1,10 @@
 """
-This script provides a command-line interface to process PDF resumes and generate
-interview questions or convert the resumes to JSON format using the `InterviewQuestionMaker`
-and `ResumeJsonParser` classes.
+提供一个命令行接口，用于将PDF简历文件转换为JSON格式，以及根据简历内容生成面试问题，并根据简历文件内容生成留学推荐项目。
 
-The script offers two commands:
-- `json`: Converts a given PDF resume file to JSON format.
-- `q`: Generates interview questions based on the content of a given PDF resume file.
-
-Example usage:
-
-python script_name.py json /path/to/resume.pdf
-python script_name.py q /path/to/resume.pdf
-
+该脚本提供了三个命令：
+- `json`：将给定的PDF简历文件转换为JSON格式。
+- `q`：根据给定的PDF简历文件的内容生成面试问题。
+- `g`：根据给定的PDF简历文件的内容生成CS留学推荐项目。
 """
 
 import typer
@@ -29,10 +22,10 @@ question_maker: InterviewQuestionMaker = InterviewQuestionMaker()
 @app.command()
 def json(file_path: str):
     """
-    Convert a PDF resume file to JSON format.
+    将PDF简历文件转换为JSON格式。
 
-    Args:
-        file_path (str): The path to the PDF resume file.
+    Args：
+        file_path（str）：PDF简历文件的路径。
     """
     with Progress(
         SpinnerColumn(),
@@ -46,10 +39,10 @@ def json(file_path: str):
 @app.command("q")
 def question(file_path: str):
     """
-    Generate interview questions based on the content of a PDF resume file.
+    根据PDF简历文件的内容生成面试问题。
 
-    Args:
-        file_path (str): The path to the PDF resume file.
+    Args：
+        file_path（str）：PDF简历文件的路径。
     """
     with Progress(
         SpinnerColumn(),
@@ -59,6 +52,21 @@ def question(file_path: str):
         progress.add_task(description="Processing...", total=None)
         pprint(question_maker.create_questions(file_path))
 
+@app.command("g")
+def global_make(file_path: str):
+    """
+    根据PDF简历文件的内容生成CS留学推荐项目。
+
+    Args：
+        file_path（str）：PDF简历文件的路径。
+    """
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        transient=True,
+    ) as progress:
+        progress.add_task(description="Processing...", total=None)
+        pprint(question_maker.make_global(file_path))
 
 if __name__ == "__main__":
     app()

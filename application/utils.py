@@ -26,8 +26,9 @@ class OpenAIConfig:
         frequency_penalty (float)：令牌频率的惩罚，默认为0。
         presence_penalty (float)：令牌存在的惩罚，默认为0。
     """
-    model: str = "gpt-3.5-turbo"
-    # model: str = "gpt-4-1106-preview"
+    # model: str = "gpt-3.5-turbo-16k" # 16k for test only
+    model: str = "gpt-4-1106-preview"
+    # model: str = "gpt-4-32k-0613"
     temperature: float = 0.0
     max_tokens: int = 2000
     top_p: float = 1

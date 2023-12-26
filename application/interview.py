@@ -4,7 +4,7 @@ Module for generating interview questions from a PDF file.
 
 import re
 import PyPDF2
-from application.prompts import QUESTION_PROMPT
+from application.prompts import QUESTION_PROMPT,GLOBAL_PROMPT
 from application.utils import OpenAIConfig, query_ai
 from typing import Union, IO
 
@@ -17,6 +17,7 @@ class InterviewQuestionMaker:
         """Initialize the InterviewQuestionMaker with the specified configuration."""
         self.config = config
         self.prompt = prompt
+        self.global_prompt = GLOBAL_PROMPT
 
     def create_questions(self, pdf_stream: Union[str, IO]) -> str:
         """
@@ -29,6 +30,11 @@ class InterviewQuestionMaker:
         prompt = self.complete_prompt(pdf_str)
         return query_ai(self.config, prompt)
 
+    def make_global(self, pdf_stream: Union[str, IO]) -> str:
+        pdf_str = self.pdf_to_str(pdf_stream)
+        prompt = self.complete_global_prompt(pdf_str)
+        return query_ai(self.config, prompt)
+
     def complete_prompt(self, pdf_str: str) -> str:
         """
         Complete the prompt with the given PDF string.
@@ -37,6 +43,15 @@ class InterviewQuestionMaker:
             pdf_str (str): PDF content as a string.
         """
         return self.prompt.format(resume=pdf_str)
+
+    def complete_global_prompt(self, pdf_str: str) -> str:
+        """
+        Complete the prompt with the given PDF string.
+
+        Args:
+            pdf_str (str): PDF content as a string.
+        """
+        return self.global_prompt.format(resume=pdf_str)
 
     def pdf_to_str(self, pdf_stream: Union[str, IO]) -> str:
         """
