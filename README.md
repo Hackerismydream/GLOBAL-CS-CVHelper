@@ -1,17 +1,24 @@
 # GLOBAL-CS-CVHelper
+![Static Badge](https://img.shields.io/badge/version-0.1.0-red)
+![maven](https://img.shields.io/badge/FastAPI-0.105.0-green.svg)
+![Static Badge](https://img.shields.io/badge/openai-1.1-blue)
+![Static Badge](https://img.shields.io/badge/vue-3.2.13-green)
 
 让 AI 为您解决CS留学项目选择问题！
 <br>
 <br>
 CVHelper提供了一系列的工具实现从【您的简历】-->>【推荐的CS留学项目】的流程！
 
-【流程图】
 
 1.基于typer的命令行界面（CLI）工具，旨在通过根据候选人的简历自动生成可能的面试问题：包括简历JSON解析器、基于GPT-4的简历解析器。
 
 2.提供一个可视化Web界面，上传简历，即可生成你的专属推荐留学项目。
 
 3.构建了留学项目数据库，感谢[Global-CS](https://global-cs-application.github.io/)提供的原始数据。
+
+## How it works？
+![img_1.png](img_1.png)
+
 
 ## 特点 ✨
 * 解析 PDF 格式的简历文件并将其转换为 JSON 格式
@@ -72,16 +79,16 @@ CLI 中有两个主要命令：
 ### 从简历生成推荐的CS留学项目（CLI）
 ```json
 {
-  "推荐院校": ["ETH MSCS", "Cambridge MLMI", "EPFL MSCS"],
-  "推荐理由": [
-    "候选人拥有优秀的GPA（3.88/4.0），在计算机科学、数学和统计学方面有扎实的学术背景，与ETH MSCS申请者的学术水平相当。",
-    "候选人具备丰富的科研经验，包括与教授合作发表的学术论文和实际的研究项目，这与成功申请Cambridge MLMI的历史案例中的科研经历相似。",
-    "候选人在知名公司Intel和Teradata担任实习生，并在大学担任教学助理，展现了实践能力和领导力，与EPFL MSCS申请者的实习经历相匹配。",
-    "候选人掌握多种编程语言和开发工具，具备强大的技术能力，这将有助于其在计算机科学领域的深造。",
-    "候选人在多个项目中展现了独立研发和团队合作的能力，这些经历将增强其在申请顶尖院校项目时的竞争力。"
-  ]
+    '推荐院校': ['ETH MSCS', 'Cambridge ACS', 'EPFL MSCS', 'IC AC', 'UvA AI'],
+    '推荐理由': [
+        '候选人在美国威斯康星大学麦迪逊分校（University of Wisconsin-Madison）获得计算机科学（荣誉）、数学、统计学士学位，该校在全球大学排名中位列前50，与历史申请成功人的学校档次相当。',
+        '候选人的GPA为3.88/4.0，与历史申请成功人的GPA相当，且连续多年获得院长名单荣誉，表明其在学术上的优秀表现。',
+        '候选人具有丰富的科研经历，包括在计算机图形学、基于视觉的实时运动捕捉系统、基于视觉的工作风险评估系统等方向的研究，这些经历与历史申请成功人的科研经历相当。',
+        '候选人在英特尔公司和Teradata公司担任软件开发工程师实习生和数据工程师实习生，这些实习经历与历史申请成功人的实习经历相当。',
+        '候选人具有丰富的项目经验，包括NLP-powered Resume Parser和Stock Drop Notifier等项目，这些经验将有助于其在申请的项目中表现出色。',
+        '综上，候选人的学校档次、专业、GPA、科研经历、实习经历等指标均与历史申请成功人的相应指标高度匹配，因此推荐其申请ETH MSCS、Cambridge ACS、EPFL MSCS、IC AC、UvA AI等项目。'
+    ]
 }
-
 ```
 ### 从简历生成可能的面试问题（CLI）
 ```bash

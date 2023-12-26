@@ -33,6 +33,7 @@ class InterviewQuestionMaker:
     def make_global(self, pdf_stream: Union[str, IO]) -> str:
         pdf_str = self.pdf_to_str(pdf_stream)
         prompt = self.complete_global_prompt(pdf_str)
+        print(prompt)
         return query_ai(self.config, prompt)
 
     def complete_prompt(self, pdf_str: str) -> str:
