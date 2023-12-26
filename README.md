@@ -70,7 +70,7 @@ CLI 中有两个主要命令：
 2. json：将简历 PDF 文件解析为 JSON 格式
 3. g：解析简历PDF，并根据留学申请历史数据生成推荐项目
 ### 从简历生成推荐的CS留学项目（CLI）
-```json lines
+```json
 {
   "推荐院校": ["ETH MSCS", "Cambridge MLMI", "EPFL MSCS"],
   "推荐理由": [
@@ -87,7 +87,7 @@ CLI 中有两个主要命令：
 ```bash
 python cli.py q <file_path>
 ```
-```json lines
+```json
 {
     'technical_questions': [
         '您在使用MERN堆栈和Azure Active Directory时，遇到了哪些挑战？您是如何解决这些挑战的？',
@@ -107,7 +107,7 @@ python cli.py q <file_path>
 ```bash
 python cli.py json <file_path>
 ```
-```json lines
+```json
 {
     'personal_detail': {
         'first_name': 'Huan',
@@ -181,5 +181,3 @@ Telegram bot account by using Scrapy, Selenium, BeautifulSoup, Regex, Requests, 
     ]
 }
 ```
-
-即将推出
